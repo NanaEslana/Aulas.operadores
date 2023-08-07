@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aulas </title>
+</head>
+<body>
+    <script>
+        //spread permite que umaexpressão seja espandida
+
+        let args = [1,2,3];
+        console.log(...args);
+
+        //Mercado Lista
+
+        const listamae = ['leite','Ovos','Papel'];
+        const listanamo = ['Arroz','Feijão','Suco'];
+        const listaescri = ['Canela','Lapis','Clipe'];
+
+        const listacompra = listamae.concat(listanamo,listaescri);//Junta as duas lista de compra
+        /* Ou pode usar
+        const listacompra = [...listamae,...listanamo] dar o mesmo resultado. */
+        console.log(listacompra);
+
+        //Como Não sabemos quais palavras iremos passa,vamos ultilizar o rest
+        //vai pegar o numero de algurmentos que a pessoa passa,e vai coloca em uma array
+        //Quantidade de vogais
+        function contaVogaisaNaocentuada (...palavras){
+            let qtdVogais = 0;
+            for(let palavra of palavras){
+                let palavraLowerCase = palavra.toLowerCase(); //Deix tudo em minusculo
+                const letras = [...palavraLowerCase];
+                for(let letra of letras){
+                    if('aeiou'.indexOf(letra) !== -1){//Identifica se tem essas letras
+                        qtdVogais++
+                    }  
+                }
+            }
+
+         console.log(qtdVogais);
+        }
+
+
+        console.log(contaVogaisaNaocentuada('es6')); //1
+        console.log(contaVogaisaNaocentuada('Java','Javacript','Delphi'));// 7
+        console.log(contaVogaisaNaocentuada('Não ConCidera AcEntuacao'));// 11
+
+
+        //Desestrutura de array,uma maneira de eextrair varios valores
+
+        const usuario = {
+            nome: 'Eslana',
+            sobrenome: 'Regina',
+            senha: '1345678',
+            email: 'eslana_@gmail.com',
+            profissao:'Advogada',
+            gitHub: 'NanaEslana'
+        }
+
+        //Verificar se o email foi cadastrado
+
+        const {email,profissao,gitHub} = usuario; //Extrair
+        console.log(email);
+        console.log(profissao);
+        console.log(gitHub);
+
+        const pessoas = {
+        sobrenome: 'Regina',
+        nomedaMae: 'Elice'
+        }
+        //Sobrenome nome da propriedade, Apelido rotulo que eu consigo dar
+        const {sobrenome: Apelido, nomedaMae: Mae} = pessoas;
+        console.log(Apelido);
+        console.log(Mae);
+
+
+        const suco = {
+            sabor:'Uva',
+            quantidade: '500ml'
+        }       
+        const doce = {
+            tipo: 'Açucar'
+        }   
+        function descreveSuco({sabor,quantidade},{tipo}){
+            return `Este suco é de sabor ${sabor} e possui ${quantidade} adocicado com ${tipo}`;
+        }
+
+        console.log(descreveSuco(suco,doce));
+
+        const cores = ['Azul','Cinza','Branco','Preto'];
+
+        //destruturamento
+        const [cor1, , ,cor2] = cores;//Pega a primeira e a ultima cor
+
+        console.log(cor1,cor2);
+
+        //dessa meneira conseguimos destrutura valores dentro de uma array
+
+        const contato = [
+            {
+                nome: 'Eslana',
+                numero: '9987-7867'
+            },
+            {
+               nome: 'Regina',
+               numero: '9878-7067'
+            },
+            {
+                nome: 'Nana',
+                numero: '8778-7970'
+            }
+
+        ];
+
+        const [,Carol] = contato;
+
+        function mostraNumero ({numero}){
+            console.log(numero);
+        }
+
+        mostraNumero(Carol);
+
+
+    </script>
+</body>
+</html>
