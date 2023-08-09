@@ -122,6 +122,100 @@
         mostraNumero(Carol);
 
 
+        //Ultilizando orientação a objeto no javaScript
+
+        class carro {
+             constructor(modelo,chassi,qtdPorta){
+                this.modelo = modelo;
+                this.chassi = chassi;
+                this.qtdPorta = qtdPorta;
+        
+            }
+        }
+        function andar(){
+            console.log('Vrum,Vrum');
+        }
+
+
+
+        const carroBasico = new carro('basico','998978-0',2);
+
+        console.log(carroBasico.modelo);
+        console.log(carroBasico.chassi);
+        console.log(carroBasico.qtdPorta);
+
+        
+
+        /* Essa pode ser tuliliza antes da função 
+
+        const carro = new Carro('Sonix');
+        console.log(carro.modelo);
+
+        function Carro(modelo){
+            this.modelo = modelo;
+        }
+
+        */
+
+        /*
+        class Carro {
+            constructor(modelo){
+             this.modelo =  modelo;
+            }
+        }
+        const carro = new Carro('Sonix');
+        console.log(carro.modelo);
+
+
+        */
+
+
+        //Class tem que declara a variavel depois.
+        //podemos declarar nossa class por meio de expressoes,eleas pode ser anonima ou nomeada localmente
+
+        const Carro = class{
+             constructor(modelo){
+                this.modelo =  modelo;
+            }
+        }
+        const carro = new Carro('Sonix');
+        console.log(carro.modelo);class Carro {
+         static abrirPorta() {
+                console.log('Abrindo Porta');
+            }
+
+            static fecharPorta() {
+              console.log('Fechando Porta');
+            }
+        }
+
+        //criar staticnão precisa instancia um objeto
+
+        Carro.abrirPorta();
+        Carro.fecharPorta();
+        
+        
+        const propriedades = new WeakMap();
+
+        class VideoGamer {
+             constructor(nome,controle,saida,midia){
+                 propriedades.set(this,{nome,controle,saida,midia});
+                }
+             recuperar(propriedade){
+                  return propriedades.get(this)[propriedade];
+                }
+        }
+
+        const caixa369 = new VideoGamer('caixa 360',4,'hdmi','dvd');
+        console.log(caixa369.recuperar('nome'));
+
+
+
+
+
+
+
+
     </script>
 </body>
 </html>
